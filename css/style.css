@@ -1,0 +1,86 @@
+/* Put your CSS here */
+.ember-application {
+    max-width: 1000px;
+	margin: 30px auto;
+}
+
+#topicList{
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+#topicList th, #topicList td{
+	color: #8c8c8c;
+	font-weight: normal;
+	font-size: 14px;
+	padding: 12px 5px;
+	line-height: 1.25;
+	text-align: left;
+	vertical-align: middle;
+	min-width:200px;
+}
+
+#topicList td a{
+	color: #8c8c8c;
+	text-decoration: none;
+	font-size:16px;
+	font-weight:bolder;
+}
+
+#topicList td a:hover{
+	color:black;
+}
+
+#topicHead{
+	color: #0088cc;
+	font-size:25px;
+	margin-top:30px;
+	display:block;
+	margin-left:50px;
+	text-decoration: none;
+	margin-bottom:30px;
+}
+
+.postList li{
+	list-style-type: none;
+	width: 60%;
+	min-height: 50px;
+	font-size: 16px;
+	padding-bottom: 20px;
+}
+}
+#addThread{
+	float:right;
+}
+
+.editBox{
+	width:80%;
+	position:fixed;
+	bottom:0;
+	height:300px;
+	border:2px solid lightgray;
+	border-bottom: none;
+	background-color:#f2f2f2;
+}
+
+.ember-text-area{
+	width: 86%;
+	margin-left: 4%;
+	outline: 0;
+	box-shadow: none;
+	border: 1px solid gray;
+	resize: none;
+	height:200px;
+}
+
+.editDone{
+	float: right;
+	margin-top: 35px;
+	margin-right: 60px;
+}
+
+.showhtml{
+	height:210px;
+	background-color: white;
+	border:1px solid darkgray;
+}

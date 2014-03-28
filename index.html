@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+</head>
+</head>
+<body>
+  <script type="text/x-handlebars">
+    {{#link-to 'threads'}}<img id="site-logo" class="logo-big" src="http://cdn.discourse.org/uploads/emberjs_private/97/6ada2068e44046d0.png" alt="Ember.JS">{{/link-to}}
+
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="threads">
+    <div class='btn btn-default' id='addThread' {{action 'addThread'}}>Create Topic</div>
+    <table id='topicList'>
+      <thead>
+        <tr>
+          <th>Topic</th>
+          <th>Category</th>
+          <th>Posts</th>
+          <th>Last Active</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each thread in model}}
+          <tr>
+            <td>
+              {{#link-to 'thread' thread}}{{format-markdown thread.text}}{{/link-to}}
+            </td>
+            <td>
+
+            </td>
+            <td>
+              {{thread.posts.length}}
+            </td>
+            <td>
+              {{thread.last_active}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    {{#if isEditing}}
+      {{partial '_edit'}}      
+    {{/if}}
+  </script>
+
+  <script type='text/x-handlebars' id='_edit'>
+    <div class='editBox row-fluid' style='width:80%'>
+      <div class='span6'>
+        Your Reply
+        {{textarea value=newItem.markdown}}
+      </div>
+      <div class='span6'>
+        Preview
+        <div class='showhtml'>
+          {{format-markdown newItem.text}}
+        </div>
+      </div> 
+      <div class='editDone'>
+        <button {{action 'done'}}>Done</button>  
+      </div>
+    </div>
+    
+  </script>
+
+  <script type='text/x-handlebars' id="thread/index">
+    No posts yet. Add one.
+  </script>
+  <script type="text/x-handlebars" id="thread">
+   {{#link-to id='topicHead'}}{{content.text}}{{/link-to}}
+    <ul class='postList'>    
+    {{#each post in model.posts}}
+      <li>{{format-markdown post.text}}</li>
+    {{/each}}
+    </ul>
+    {{#if isEditing}}
+      {{partial '_edit'}}
+    {{else}}
+      <button class='btn btn-primary' {{action 'addPost'}}>
+        {{#if postLength}}
+          Reply
+        {{else}}
+          Add Post
+        {{/if}}
+      </button>
+    {{/if}}
+  </script>
+
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/ember-1.4.0.js"></script>
+  <script src="js/libs/moment.min.js" type="text/javascript"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+  <script src="js/app.js"></script>
+  <!-- to activate the test runner, add the "?test" query string parameter -->
+  <script src="tests/runner.js"></script>
+</body>
+</html>
